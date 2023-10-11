@@ -11,23 +11,24 @@ url = 'http://localhost:5000/translate'
 def translate_text():
     data = request.get_json()
     text = data.get('text')
-    translatedText = requests.post(url, json={
+    response = requests.post(url, json={
         "q": text,
-        "source": "auto",
+        "source": "es",
         "target": "en"
     })
-    print(translatedText)
-    print('translatedText')
-    return {"hihi": 'hello'}
+    
+    if response.status_code == 200:
+        # If the response contains JSON data, you can use the json() method
+        translatedText = response.json()['translatedText']
+        print('JSON Data:', translatedText)
+        textBlob = TextBlob(translatedText)
+        emotion = textBlob.sentiment
 
-    textBlob = TextBlob(translatedText)
-    emotion = textBlob.sentiment
-
-    response = {
-        'emotion': emotion,
-    }
-
-    return jsonify(response)
+        return {'emotion': emotion[0]}
+    else:
+        print(f'Request failed with status code {response.status_code}')
+        print('Response content:', response.content)
+        return {"error": 'Error unknown'}
 
 if __name__ == '__main__':
     app.run(debug=True, port=5001)
