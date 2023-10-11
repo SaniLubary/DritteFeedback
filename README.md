@@ -3,7 +3,7 @@ Service to translate and give sentiment feedback with provided text for use in D
 
 ### Setup LibreTranslate
 - Have docker installed
-- Clone (libretranslate)[https://github.com/LibreTranslate/LibreTranslate]
+- Clone [libretranslate](https://github.com/LibreTranslate/LibreTranslate)
 - Run run.bat
 
 ### Install libraries app
