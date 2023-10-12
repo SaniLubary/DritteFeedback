@@ -7,7 +7,7 @@ Service to translate and give sentiment feedback with provided text for use in D
 - Run run.bat
 
 ### Install libraries app
-`pip install flask textblob libretranslate request`
+`pip install flask textblob libretranslate requests`
 
 ### Init app
 `python app.py`
