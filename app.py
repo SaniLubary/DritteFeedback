@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request
 from textblob import TextBlob
 import requests
 
@@ -18,7 +18,6 @@ def translate_text():
             "target": "en"
         })
         if response.status_code == 200:
-            # If the response contains JSON data, you can use the json() method
             translatedText = response.json()['translatedText']
             print('JSON Data:', translatedText)
             try:
